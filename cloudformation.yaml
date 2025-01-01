@@ -1,0 +1,53 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "SKKU BK21 CloudFormation Template"
+
+Mappings:
+  ResourceMap:
+    Bakcend:
+      Endpoint : https://api.bk21.com
+
+Resources:
+  ########## FRONTEND ##########
+  FrontendAmplifyApp:
+    Type: AWS::Amplify::App
+    Properties:
+      # AccessToken: String
+      # AutoBranchCreationConfig: 
+      #   AutoBranchCreationPatterns: 
+      #     - String
+      #   BasicAuthConfig: 
+      #     BasicAuthConfig
+      #   BuildSpec: String
+      #   EnableAutoBranchCreation: Boolean
+      #   EnableAutoBuild: Boolean
+      #   EnablePerformanceMode: Boolean
+      #   EnablePullRequestPreview: Boolean
+      #   EnvironmentVariables: 
+      #     - EnvironmentVariable
+      #   Framework: String
+      #   PullRequestEnvironmentName: String
+      #   Stage: String
+      # BasicAuthConfig: 
+      #   EnableBasicAuth: Boolean
+      #   Password: String
+      #   Username: String
+      # BuildSpec: String
+      # CustomHeaders: String
+      # CustomRules: 
+      #   - CustomRule
+      # EnableBranchAutoDeletion: Boolean
+      # EnvironmentVariables: 
+      #   - Name: String
+      #     Value: String
+      # IAMServiceRole: String
+      Name: frontend
+      # OauthToken: String
+      Platform: WEB_COMPUTE
+      Repository: https://github.com/SKKU-BK21/frontend.git
+
+  ##########  BACKEND  ##########
+
+Outputs:
+  FrontendAppDomain:
+    Description: "Frontend App Domain"
+    Value: !Ref FrontendAmplifyApp.DefaultDomain
